@@ -1,0 +1,3 @@
+# ThirdParty SDK output
+sdk/msvc2022-x64-md/Debug/occt/*.*
+sdk/msvc2022-x64-md/Debug/occt/win64/vc14/bind/*.pdb

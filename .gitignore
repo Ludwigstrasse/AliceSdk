@@ -1,12 +1,12 @@
 # ThirdParty SDK output
-/sdk/msvc2022-x64-md/Debug/occt/data/*.*
-/sdk/msvc2022-x64-md/Debug/occt/win64/vc14/bind/*.pdb
-/sdk/msvc2022-x64-md/Debug/occt/data/occ/*.brep
-/sdk/msvc2022-x64-md/Debug/occt/data/images/*.jpg
-/sdk/msvc2022-x64-md/Debug/occt/data/images/*.gif
-/sdk/msvc2022-x64-md/Debug/occt/data/stl/*.stl
-/sdk/msvc2022-x64-md/Debug/occt/data/occ/*.rle
-/sdk/msvc2022-x64-md/Debug/occt/data/images/*.png
-/sdk/msvc2022-x64-md/Debug/occt/data/iges/*.iges
+/msvc2022-x64-md/Debug/occt/data/*.*
+/msvc2022-x64-md/Debug/occt/win64/vc14/bind/*.pdb
+/msvc2022-x64-md/Debug/occt/data/occ/*.brep
+/msvc2022-x64-md/Debug/occt/data/images/*.jpg
+/msvc2022-x64-md/Debug/occt/data/images/*.gif
+/msvc2022-x64-md/Debug/occt/data/stl/*.stl
+/msvc2022-x64-md/Debug/occt/data/occ/*.rle
+/msvc2022-x64-md/Debug/occt/data/images/*.png
+/msvc2022-x64-md/Debug/occt/data/iges/*.iges
 *.bmp
 *.step

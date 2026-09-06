@@ -16,7 +16,7 @@
 | 依赖 | 固定版本 | 文件范围 | Alice 用途 | 许可证文件 |
 | --- | --- | --- | --- | --- |
 | pugixml | 1.13 | `pugixml/` | XML 配置、插件与产品信息读取 | `licenses/pugixml/LICENSE.md` |
-| spdlog | 1.15.3 | `spdlog/` | 平台诊断日志；目录包含其头文件依赖 | `licenses/spdlog/LICENSE` |
+| spdlog | 1.15.3 | `spdlog/CMakeLists.txt`、`spdlog/include/`、`spdlog/src/`、`spdlog/cmake/`、`spdlog/LICENSE` | 平台诊断日志；只保存 Alice 编译所需源码闭包 | `licenses/spdlog/LICENSE` |
 | RapidJSON | 1.1.0 | `3rdParty/include/rapidjson/include/rapidjson/` | 测试协议和工作台设置 | `licenses/rapidjson/license.txt` |
 | ICU | 74.2 | `3rdParty/include/unicode/`、`3rdParty/lib/icu*.lib`、`3rdParty/bin/icu*74.dll` | Unicode 转换、区域设置和测试运行 | `licenses/icu/LICENSE` |
 | brotli | 1.2.0 | `3rdParty/runtime/msvc2022-x64-md/Debug/occt/brotli*.dll` | OCCT 传递运行依赖 | `licenses/brotli/LICENSE` |
@@ -36,7 +36,7 @@ OCCT 传递动态库的版本由 AliceThirdParty 固定 vcpkg 基线及对应构
 
 ## 目录合同
 
-Alice 持续集成校验 `SHA256SUMS` 后，把 `pugixml`、`spdlog` 和 `3rdParty` 复制到 Alice 工作区 `Externals`。同一 AliceSdk 固定提交中的 `msvc2022-x64-md/Debug/occt` 复制到 `Externals/3rdParty/sdk/msvc2022-x64-md/Debug/occt`。
+Alice 持续集成把固定 AliceSdk 提交直接稀疏检出到 `Externals/3rdParty/sdk`，校验 `alice-platform/SHA256SUMS` 后，把 `pugixml` 与 `spdlog` 分别复制到 Alice 工作区 `Externals`，并把 `alice-platform/3rdParty` 下的 `include`、`lib`、`bin`、`runtime` 分别复制到 `Externals/3rdParty`。`occt` 自检出开始即位于 `Externals/3rdParty/sdk/msvc2022-x64-md/Debug/occt`，不再执行第二次复制。
 
 制品只对应 Visual Studio 2022、x64、动态 MSVC 运行库和 Debug 配置。其他体系结构、运行库或 Release 配置必须使用独立目录和独立完整性清单，不能覆盖本目录文件。
 

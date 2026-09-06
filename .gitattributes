@@ -1,0 +1,12 @@
+README.md text eol=lf
+
+msvc2022-x64-md/Debug/alice-platform/DEPENDENCIES.md text eol=lf
+msvc2022-x64-md/Debug/alice-platform/THIRD-PARTY-NOTICES.md text eol=lf
+msvc2022-x64-md/Debug/alice-platform/SHA256SUMS text eol=lf
+
+# AliceSdk stores byte-exact third-party inputs and binaries. Their hashes must
+# remain identical on every checkout, independent of the host Git settings.
+msvc2022-x64-md/Debug/alice-platform/pugixml/** binary
+msvc2022-x64-md/Debug/alice-platform/spdlog/** binary
+msvc2022-x64-md/Debug/alice-platform/3rdParty/** binary
+msvc2022-x64-md/Debug/alice-platform/licenses/** binary

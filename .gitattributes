@@ -3,6 +3,7 @@ README.md text eol=lf
 msvc2022-x64-md/Debug/alice-platform/DEPENDENCIES.md text eol=lf
 msvc2022-x64-md/Debug/alice-platform/THIRD-PARTY-NOTICES.md text eol=lf
 msvc2022-x64-md/Debug/alice-platform/SHA256SUMS text eol=lf
+msvc2022-x64-md/Debug/alice-platform/build-inputs/** text eol=lf
 
 # AliceSdk stores byte-exact third-party inputs and binaries. Their hashes must
 # remain identical on every checkout, independent of the host Git settings.

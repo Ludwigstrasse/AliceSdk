@@ -1,0 +1,7 @@
+set(VCPKG_TARGET_ARCHITECTURE x64)
+set(VCPKG_CRT_LINKAGE dynamic)
+set(VCPKG_LIBRARY_LINKAGE dynamic)
+set(VCPKG_C_FLAGS_DEBUG [=[/experimental:deterministic /pathmap:C:\=c/ /pathmap:D:\=d/]=])
+set(VCPKG_CXX_FLAGS_DEBUG [=[/experimental:deterministic /pathmap:C:\=c/ /pathmap:D:\=d/]=])
+set(VCPKG_LINKER_FLAGS_DEBUG "/PDBALTPATH:%_PDB%")
+set(VCPKG_LINKER_FLAGS_RELEASE "/PDBALTPATH:%_PDB%")

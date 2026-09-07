@@ -4,22 +4,29 @@ AliceSdk 发布 Alice 平台可复现构建和产品集成所需的固定开发�
 
 ## 目录结构
 
-制品按工具链、体系结构、MSVC 运行库和构建配置分层：
+制品按工具链、体系结构、运行库和构建配置分层：
 
 ```text
 msvc2022-x64-md/
   Debug/
     alice-platform/
     occt/
+linux-x64/
+  Release/
+    occt/
 ```
 
-`alice-platform` 保存 Alice Windows 构建所需的最小第三方闭包，并具有依赖版本说明、第三方许可说明、可复现构建输入和逐文件 SHA-256 清单。`occt` 保存相同工具链和配置的既有 OCCT 开发包，其当前内容由 AliceSdk 完整 Git 提交和对应 Git 树固定；任何新增或更新的 OCCT 发布单元必须先补齐独立的版本、许可和逐文件清单，再允许消费方升级。
+`alice-platform` 保存 Alice Windows 构建所需的最小第三方闭包，并具有依赖版本说明、第三方许可说明、可复现构建输入和逐文件 SHA-256 清单。Windows `occt` 保存相同工具链和配置的既有 OCCT 开发包。
+
+`linux-x64/Release/occt` 保存供 Alice 与公司独立 EXE 产品在 Linux x86-64 Release 流水线中共同使用的固定 OCCT 开发包。该发布单元包含版本和来源说明、第三方许可说明、逐文件 SHA-256 清单，并保留 Linux 符号链接与执行权限。
 
 ## 使用合同
 
 使用方必须固定 AliceSdk 的完整 Git 提交或不可变发布版本，先校验文件集合与 SHA-256，再把对应制品准备到构建目录。禁止使用浮动分支、按时间变化的下载地址或本机残留目录替代固定制品。
 
-不同工具链、体系结构、MSVC 运行库和构建配置使用独立目录。Debug 与 Release 制品不得混用；新版本不得覆盖已发布文件。
+不同工具链、体系结构、运行库和构建配置使用独立目录。Debug 与 Release 制品不得混用；新版本不得覆盖已发布文件。
+
+Linux 使用方在配置 CMake 前，必须进入 `linux-x64/Release/occt` 并执行 `sha256sum --check --strict SHA256SUMS`。校验失败必须立即终止流水线。
 
 ## 来源与发布
 

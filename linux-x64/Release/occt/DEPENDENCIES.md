@@ -9,4 +9,4 @@
 - Export contract: AliceThirdParty/scripts/export-occt-sdk.sh
 - Relocation rule: exported helper scripts contain no build-host paths; dependency library directories are supplied by the consumer environment
 
-This directory is an immutable export of the existing SolidDesigner PR #388 cache. Consumers must pin the AliceSdk commit and validate SHA256SUMS before configuring CMake.
+This release unit originates from the existing SolidDesigner PR #388 cache. Before publication, `bin/env.sh` and `bin/custom_gcc_64.sh` were normalized to remove build-host absolute paths and leave dependency directories consumer-controlled; all other cached files remain unchanged. Consumers must pin the AliceSdk commit and validate SHA256SUMS before configuring CMake.

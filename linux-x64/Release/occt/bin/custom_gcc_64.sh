@@ -5,11 +5,11 @@ if [ "$1" == "" ]; then
     # set environment variables used by OCCT
     export CSF_FPE=0
 
-    export TCL_DIR="/home/runner/work/SolidDesigner/SolidDesigner/AliceThirdParty/build/occt/linux/Release/vcpkg_installed/x64-linux/lib"
-    export TK_DIR="/home/runner/work/SolidDesigner/SolidDesigner/AliceThirdParty/build/occt/linux/Release/vcpkg_installed/x64-linux/lib"
-    export FREETYPE_DIR="/home/runner/work/SolidDesigner/SolidDesigner/AliceThirdParty/build/occt/linux/Release/vcpkg_installed/x64-linux/lib"
+    export TCL_DIR="${TCL_DIR:-}"
+    export TK_DIR="${TK_DIR:-}"
+    export FREETYPE_DIR="${FREETYPE_DIR:-}"
     export FREEIMAGE_DIR=""
-    export TBB_DIR="/home/runner/work/SolidDesigner/SolidDesigner/AliceThirdParty/build/occt/linux/Release/vcpkg_installed/x64-linux/lib"
+    export TBB_DIR="${TBB_DIR:-}"
     export VTK_DIR=""
     export FFMPEG_DIR=""
     export JEMALLOC_DIR=""

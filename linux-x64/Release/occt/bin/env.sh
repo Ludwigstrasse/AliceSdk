@@ -20,7 +20,7 @@ fi
 
 # ----- Define path to 3rdparty products -----
 if [ "${THIRDPARTY_DIR}" == "" ]; then
-  export THIRDPARTY_DIR="/home/runner/work/SolidDesigner/SolidDesigner/AliceThirdParty/extern/OCCT"
+  export THIRDPARTY_DIR=""
 fi
 
 # ----- Read script arguments -----

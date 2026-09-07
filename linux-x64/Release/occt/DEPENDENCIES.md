@@ -7,5 +7,6 @@
 - Platform and configuration: Linux x86-64, Release, shared libraries
 - Enabled OCCT integrations: OpenGL, oneTBB, FreeType and zlib
 - Export contract: AliceThirdParty/scripts/export-occt-sdk.sh
+- Relocation rule: exported helper scripts contain no build-host paths; dependency library directories are supplied by the consumer environment
 
 This directory is an immutable export of the existing SolidDesigner PR #388 cache. Consumers must pin the AliceSdk commit and validate SHA256SUMS before configuring CMake.

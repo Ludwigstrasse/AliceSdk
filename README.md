@@ -4,25 +4,34 @@ AliceSdk 发布 Alice 平台可复现构建和产品集成所需的固定开发�
 
 ## 目录结构
 
-制品按工具链、体系结构、MSVC 运行库和构建配置分层：
+制品按工具链、体系结构、运行库和构建配置分层：
 
 ```text
 msvc2022-x64-md/
   Debug/
     alice-platform/
     occt/
+linux-x64/
+  Release/
+    occt/
 ```
 
-`alice-platform` 保存 Alice Windows 构建所需的最小第三方闭包，并具有依赖版本说明、第三方许可说明、可复现构建输入和逐文件 SHA-256 清单。`occt` 保存相同工具链和配置的既有 OCCT 开发包，其当前内容由 AliceSdk 完整 Git 提交和对应 Git 树固定；任何新增或更新的 OCCT 发布单元必须先补齐独立的版本、许可和逐文件清单，再允许消费方升级。
+`alice-platform` 保存 Alice Windows 构建所需的最小第三方闭包，并具有依赖版本说明、第三方许可说明、可复现构建输入和逐文件 SHA-256 清单。Windows `occt` 保存相同工具链和配置的既有 OCCT 开发包。
+
+`linux-x64/Release/occt` 保存供 Alice 与公司独立 EXE 产品在 Linux x86-64 Release 流水线中共同使用的固定 OCCT 开发包。该发布单元包含版本和来源说明、第三方许可说明、逐文件 SHA-256 清单，并保留 Linux 符号链接与执行权限。
 
 ## 使用合同
 
 使用方必须固定 AliceSdk 的完整 Git 提交或不可变发布版本，先校验文件集合与 SHA-256，再把对应制品准备到构建目录。禁止使用浮动分支、按时间变化的下载地址或本机残留目录替代固定制品。
 
-不同工具链、体系结构、MSVC 运行库和构建配置使用独立目录。Debug 与 Release 制品不得混用；新版本不得覆盖已发布文件。
+不同工具链、体系结构、运行库和构建配置使用独立目录。Debug 与 Release 制品不得混用；新版本不得覆盖已发布文件。
+
+Linux 使用方在配置 CMake 前，必须进入 `linux-x64/Release/occt` 并执行 `sha256sum --check --strict SHA256SUMS`。校验失败必须立即终止流水线。
 
 ## 来源与发布
 
 AliceThirdParty 负责第三方源码来源、固定版本、构建与导出规则。AliceSdk 负责发布构建后的确定制品。Alice 和产品仓库只消费通过验证的 AliceSdk 提交，不向 AliceSdk 反向提供产品文件。
 
-依赖变更必须同时更新版本说明、来源链、可复现构建输入、许可材料和完整性清单，并由消费候选提交的 Alice 完成 Visual Studio 2022 编译与完整 CTest。Windows 动态库必须具有可复现链接记录；CodeView 只保存 PDB 文件名，普通字符串和宽字符串均不得包含构建机盘符、工作区、产品路径或依赖构建目录。批准后的提交保持不可变；大体积版本增长时，二进制制品迁移到 AliceSdk 的不可变 Release 资产，仓库继续保存同一制品合同和清单。
+依赖变更必须同时更新版本说明、来源链、可复现构建输入、许可材料和完整性清单。Windows 制品变更由消费候选提交的 Alice 完成 Visual Studio 2022 编译与完整 CTest；Linux x86-64 Release 制品变更必须在固定 Ubuntu 环境完成逐文件校验、符号链接和执行位校验、ELF 动态依赖校验，并由消费候选提交完成 CMake 配置、编译与完整 Linux CTest。两类门禁分别适用于对应平台，不得相互替代。
+
+Windows 动态库必须具有可复现链接记录；CodeView 只保存 PDB 文件名，普通字符串和宽字符串均不得包含构建机盘符、工作区、产品路径或依赖构建目录。Linux 制品不得包含构建机绝对路径，CMake 包配置和环境脚本必须随安装目录迁移。批准后的提交保持不可变；大体积版本增长时，二进制制品迁移到 AliceSdk 的不可变 Release 资产，仓库继续保存同一制品合同和清单。

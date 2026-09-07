@@ -11,3 +11,8 @@ msvc2022-x64-md/Debug/alice-platform/pugixml/** binary
 msvc2022-x64-md/Debug/alice-platform/spdlog/** binary
 msvc2022-x64-md/Debug/alice-platform/3rdParty/** binary
 msvc2022-x64-md/Debug/alice-platform/licenses/** binary
+
+linux-x64/Release/occt/** binary
+linux-x64/Release/occt/DEPENDENCIES.md text eol=lf
+linux-x64/Release/occt/THIRD-PARTY-NOTICES.md text eol=lf
+linux-x64/Release/occt/SHA256SUMS text eol=lf
